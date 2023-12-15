@@ -1,25 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+import JottoGame from './JottoGame'; // This is where you would implement the Jotto game logic
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  state = {
+    gameStarted: false
+  };
+
+  startGame = () => {
+    this.setState({ gameStarted: true });
+  };
+
+  render() {
+    return (
+      <div className="container">
+        {!this.state.gameStarted ? (
+          <>
+            <h1 className="title">Jotto</h1>
+            <button onClick={this.startGame}>Play</button>
+          </>
+        ) : (
+          <JottoGame />
+        )}
+      </div>
+    );
+  }
 }
 
 export default App;
