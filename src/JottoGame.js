@@ -74,8 +74,8 @@ class JottoGame extends React.Component {
     const { gameWon, guessedWords, currentGuess, error } = this.state;
   
     return (
-      <div className="game-container">
-        <div>
+      <div className="container">
+        <div className="button-guess-container">
           <form onSubmit={this.handleSubmit}>
             {!gameWon ? (
               <>
@@ -91,13 +91,11 @@ class JottoGame extends React.Component {
             )}
           </form>
           <div className="guessed-words-container">
-            <div className="game-content">
-              <ul>
-                {guessedWords.map((word) => (
-                  <li key={word.guess}>{word.guess} - Matches: {word.matches}</li>
-                ))}
-              </ul>
-            </div>
+            <ul>
+              {guessedWords.map((word) => (
+                <li key={word.guess}>{word.guess} - Matches: {word.matches}</li>
+              ))}
+            </ul>
           </div>
         </div>
         <CheatSheet reset={this.state.resetColors} onReset={() => this.setState({ resetColors: false })} />

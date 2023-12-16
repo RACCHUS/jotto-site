@@ -3,13 +3,82 @@ body {
   background-color: #282c34;
   color: #fff;
   font-family: 'Courier New', Courier, monospace;
-  overflow-y: auto;
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#logo-box {
+  width: 200px;
+  height: 200px;
+  border: 2px solid #61dafb; /* This is the easy-on-the-eyes purple color */
+  position: relative;
+  overflow: hidden;
+  border-radius: 25px;
+  background-color: black;
+  color: orange;
+  margin-top: 10vh;
+}
+
+img {
+  border-radius: 10px; /* Adjust this value as needed */
 }
 
 header {
   top: 0;
   width: 100%;
   text-align: center;
+  margin-top: 20vh;
+}
+
+#game-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: nowrap;
+  align-items: center;
+  top: 0;
+  margin-top: 0;
+  color: white;
+  border-bottom: 1px solid gray;
+  position: relative;
+  flex-grow: 2;
+}
+
+.help-icon {
+  position: absolute;
+  right: 0;
+  font-size: 200%;
+  padding-right: 1vw;
+  padding-top: 1vh;
+}
+
+.rules-modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 20px;
+  /* Add more styles as needed */
+}
+
+.close-icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 200%;
+  padding: 1vw 1vh;
+  cursor: pointer;
 }
 
 p {
@@ -18,75 +87,85 @@ p {
 
 .container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
   justify-content: center;
-  min-height: 100vh;
-  margin: 10px;
-}
-
-.game-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  margin-top: 5vh;
 }
 
 .title {
   margin-bottom: 20px;
   align-items: center;
+  color: #61dafb;
 }
 
-.game-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+form {
   align-items: center;
-  height: 100%;
 }
 
 button {
   background-color: #61dafb;
   border: none;
   color: #282c34;
-  padding: 15px 32px;
+  padding: 24px 32px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  margin: 4px 2px;
+  margin: 2px;
   cursor: pointer;
   transition-duration: 0.4s;
 }
 
 button:hover {
-  background-color: #282c34;
-  color: #61dafb;
+  background-color: orange;
+  color: black;
 }
 .app-button {
-  background-color: #61dafb;
-  color: #282c34/* Add your styles for the App button here */
+  background-color: black;
+  color: white;
+  border-radius: 10px;
 }
 
-.guessed-words-container {
+.button-guess-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-right: 1vw;
+  margin-left: 10vw;
+  width: 50%;
+}
+
+.cheat-sheet-container {
+  width: 50%;
+  text-align: center;
+  margin-right: 1vw;
+  margin-left: 10vw;
 }
 
 .cheat-sheet {
-  width: 33%;
-  height: 33%;
-  position: fixed;
-  right: 1%;
-  bottom: 10%;
+  width: 66%;
+  border: 2px solid gray;
+  border-radius: 20px;
 }
 
 .cheat-sheet-title {
-  font-size: 100%;
+  text-align: center;
+  background-color: orange;
+  color: black;
 }
 
 .cheat-sheet-button {
   background-color: black;
   color: white;/* Add your styles for the CheatSheet buttons here */ /* Add some right margin to each button */
-  font-size: 10px;
-  width: 15%;
-  height: 15%;
+  width: 1%;
+  text-align: center;
+  border-radius: 10px;
+}
+
+footer {
+  text-align: center;
+  position: relative;
+  bottom: 0;
+  margin-top: 10vh;
+  margin-bottom: 5vh;
 }

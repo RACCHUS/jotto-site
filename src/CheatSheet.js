@@ -23,20 +23,22 @@ const CheatSheet = ({ reset, onReset }) => {
     };
   
     return (
-        <div className="cheat-sheet">
-        <h2 className="cheat-sheet-title">Cheat Sheet</h2>
-        {alphabet.map((letter) => (
-          <button
-            key={letter}
-            onClick={() => changeColor(letter)}
-            style={{ color: letterColors[letter] }}
-            className="cheat-sheet-button"
-            type="button"
-          >
-            {letter}
-          </button>
-        ))}
-      </div>
+        <div className="cheat-sheet-container">
+          <div className="cheat-sheet">
+            <h3 className="cheat-sheet-title">Cheat Sheet</h3>
+            {alphabet.map((letter) => (
+              <button
+                key={letter}
+                onClick={() => changeColor(letter)}
+                style={{ color: letterColors[letter] }}
+                className="cheat-sheet-button"
+                type="button"
+              >
+                {letter}
+              </button>
+            ))}
+          </div>
+        </div>
     );
   };  
 
