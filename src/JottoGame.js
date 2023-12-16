@@ -1,5 +1,6 @@
 import React from 'react';
 import wordList from './jottoWordList.json';
+import CheatSheet from './CheatSheet';
 
 class JottoGame extends React.Component {
   state = {
@@ -7,7 +8,8 @@ class JottoGame extends React.Component {
     guessedWords: [],
     currentGuess: '',
     gameWon: false,
-    error: ''
+    error: '',
+    resetColors: false,
   };
 
   generateSecretWord() {
@@ -29,7 +31,7 @@ class JottoGame extends React.Component {
   
     // Check if the guessed word is 5 letters long and exists in the word list
     if (currentGuess.length !== 5 || !wordList.includes(currentGuess)) {
-      this.setState({ error: 'Please enter a valid 5-letter word from the list.' });
+      this.setState({ error: 'Please enter a valid 5-letter.' });
       return;
     }
   
@@ -38,8 +40,8 @@ class JottoGame extends React.Component {
     // Calculate the number of matches
     let secretWordArray = secretWord.split('');
     let currentGuessArray = currentGuess.split('');
-    for (let i = 0; i < secretWordArray.length; i++) {
-      if (currentGuessArray.includes(secretWordArray[i])) {
+    for (const letter of secretWordArray) {
+      if (currentGuessArray.includes(letter)) {
         matches++;
       }
     }
@@ -52,39 +54,53 @@ class JottoGame extends React.Component {
     }));
   };      
 
+  handleSubmit = (event) => {
+    event.preventDefault(); // Prevent the form from refreshing the page
+    this.submitGuess();
+  };
+
   playAgain = () => {
     this.setState({
       secretWord: this.generateSecretWord(),
       guessedWords: [],
       currentGuess: '',
       gameWon: false,
-      error: ''
+      error: '',
+      resetColors: true,
     });
   };
 
   render() {
     const { gameWon, guessedWords, currentGuess, error } = this.state;
-
+  
     return (
-      <div>
-        <h2>Jotto Game</h2>
-        {!gameWon ? (
-          <>
-            <input value={currentGuess} onChange={this.handleGuess} />
-            <button onClick={this.submitGuess}>Guess</button>
-            {error && <p>{error}</p>}
-          </>
-        ) : (
-          <>
-            <h2>You won! 🎉</h2>
-            <button onClick={this.playAgain}>Play Again</button>
-          </>
-        )}
-        <ul>
-          {guessedWords.map((word, index) => (
-            <li key={index}>{word.guess} - Matches: {word.matches}</li>
-          ))}
-        </ul>
+      <div className="game-container">
+        <div>
+          <form onSubmit={this.handleSubmit}>
+            {!gameWon ? (
+              <>
+                <input value={currentGuess} onChange={this.handleGuess} />
+                <button type="submit">Guess</button>
+                {error && <p>{error}</p>}
+              </>
+            ) : (
+              <>
+                <h2>You won! 🎉</h2>
+                <button onClick={this.playAgain}>Play Again</button>
+              </>
+            )}
+          </form>
+          <div className="guessed-words-container">
+            <div className="game-content">
+              <ul>
+                {guessedWords.map((word) => (
+                  <li key={word.guess}>{word.guess} - Matches: {word.matches}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+        <CheatSheet reset={this.state.resetColors} onReset={() => this.setState({ resetColors: false })} />
       </div>
     );
   }

@@ -13,16 +13,19 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="container">
-        {!this.state.gameStarted ? (
-          <>
+      <>
+        <header>
             <h1 className="title">Jotto</h1>
-            <button onClick={this.startGame}>Play</button>
-          </>
-        ) : (
-          <JottoGame />
-        )}
-      </div>
+        </header>
+        <p>Go ahead, have a go.</p>
+        <div className="container">
+          {!this.state.gameStarted ? (
+            <button onClick={this.startGame} className="app-button">Play</button>
+          ) : (
+            <JottoGame />
+          )}
+        </div>
+      </>
     );
   }
 }

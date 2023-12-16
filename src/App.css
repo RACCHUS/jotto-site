@@ -3,18 +3,46 @@ body {
   background-color: #282c34;
   color: #fff;
   font-family: 'Courier New', Courier, monospace;
+  overflow-y: auto;
+}
+
+header {
+  top: 0;
+  width: 100%;
+  text-align: center;
+}
+
+p {
+  text-align: center;
 }
 
 .container {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 10px;
+}
+
+.game-container {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
 }
 
 .title {
   margin-bottom: 20px;
+  align-items: center;
+}
+
+.game-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
 
 button {
@@ -34,4 +62,31 @@ button {
 button:hover {
   background-color: #282c34;
   color: #61dafb;
+}
+.app-button {
+  background-color: #61dafb;
+  color: #282c34/* Add your styles for the App button here */
+}
+
+.guessed-words-container {
+}
+
+.cheat-sheet {
+  width: 33%;
+  height: 33%;
+  position: fixed;
+  right: 1%;
+  bottom: 10%;
+}
+
+.cheat-sheet-title {
+  font-size: 100%;
+}
+
+.cheat-sheet-button {
+  background-color: black;
+  color: white;/* Add your styles for the CheatSheet buttons here */ /* Add some right margin to each button */
+  font-size: 10px;
+  width: 15%;
+  height: 15%;
 }
