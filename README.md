@@ -15,7 +15,7 @@ Jotto is a word game where two players attempt to guess each other's secret word
 ## Tech Stack
 This Jotto game site is built using the MERN stack:
 - MongoDB: A source-available cross-platform document-oriented database program.
-- Express.js: A back end web application framework for Node.js.
+- Express.js: A back-end web application framework for Node.js.
 - React.js: A JavaScript library for building user interfaces.
 - Node.js: A back-end JavaScript runtime environment that runs on the V8 engine and executes JavaScript code outside a web browser.
 
